@@ -278,7 +278,7 @@ const EmployeeDashboard = () => {
             </tbody>
           </table>
         </div>
-      </div>
+      </main>
     </div>
   );
 };

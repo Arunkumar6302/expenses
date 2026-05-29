@@ -397,7 +397,7 @@ const ManagerDashboard = () => {
             </div>
           </div>
         )}
-      </div>
+      </main>
     </div>
   );
 };
