@@ -192,12 +192,12 @@ const ManagerDashboard = () => {
         <UserProfileDropdown />
       </nav>
 
-      <div className="dashboard-content">
+      <main className="dashboard-content">
         <div className="dash-header">
           <h1>Manager Dashboard</h1>
           <div className="filter-box">
             <Filter size={18} className="icon-yellow" />
-            <select value={filter} onChange={e => setFilter(e.target.value)} className="form-input" style={{ width: 'auto', padding: '0.4rem 1rem' }}>
+            <select aria-label="Filter expenses by status" value={filter} onChange={e => setFilter(e.target.value)} className="form-input" style={{ width: 'auto', padding: '0.4rem 1rem' }}>
               <option value="All">All Statuses</option>
               <option value="Pending">Pending</option>
               <option value="Approved">Approved</option>
@@ -212,28 +212,28 @@ const ManagerDashboard = () => {
             <div className="stat-icon" style={{ backgroundColor: '#eff6ff', color: 'var(--dark-navy)' }}><DollarSign /></div>
             <div className="stat-info">
               <span>Total Team Expenses</span>
-              <h3>${calculateTotal()}</h3>
+              <h2>${calculateTotal()}</h2>
             </div>
           </div>
           <div className="stat-card">
             <div className="stat-icon" style={{ backgroundColor: '#fef3c7', color: 'var(--yellow)' }}><Clock /></div>
             <div className="stat-info">
               <span>Pending Review</span>
-              <h3>${calculateTotal('Pending')}</h3>
+              <h2>${calculateTotal('Pending')}</h2>
             </div>
           </div>
           <div className="stat-card">
             <div className="stat-icon" style={{ backgroundColor: '#d1fae5', color: '#10b981' }}><CheckCircle /></div>
             <div className="stat-info">
               <span>Total Approved</span>
-              <h3>${calculateTotal('Approved')}</h3>
+              <h2>${calculateTotal('Approved')}</h2>
             </div>
           </div>
           <div className="stat-card">
             <div className="stat-icon" style={{ backgroundColor: '#e0e7ff', color: '#6366f1' }}><CreditCard /></div>
             <div className="stat-info">
               <span>Total Paid</span>
-              <h3>${calculateTotal('Paid')}</h3>
+              <h2>${calculateTotal('Paid')}</h2>
             </div>
           </div>
         </div>
