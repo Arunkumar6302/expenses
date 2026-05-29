@@ -43,7 +43,7 @@ const Login = () => {
   return (
     <div className="auth-page">
       <div className="auth-container" style={{ position: 'relative' }}>
-        <Link to="/" style={{ position: 'absolute', top: '1.5rem', left: '1.5rem', color: 'var(--text-muted)', transition: 'color 0.2s' }} onMouseOver={e => e.currentTarget.style.color = 'var(--yellow)'} onMouseOut={e => e.currentTarget.style.color = 'var(--text-muted)'} title="Back to Home">
+        <Link to="/" style={{ position: 'absolute', top: '1.5rem', left: '1.5rem', color: 'var(--text-muted)', transition: 'color 0.2s' }} onMouseOver={e => e.currentTarget.style.color = 'var(--yellow)'} onMouseOut={e => e.currentTarget.style.color = 'var(--text-muted)'} title="Back to Home" aria-label="Back to Home">
           <ArrowLeft size={24} />
         </Link>
         <div className="auth-header">
@@ -56,8 +56,9 @@ const Login = () => {
         </div>
         <form onSubmit={handleSubmit} className="auth-form">
           <div className="form-group">
-            <label>Email Address</label>
+            <label htmlFor="login-email">Email Address</label>
             <input 
+              id="login-email"
               type="email" 
               className="form-input" 
               placeholder="name@company.com"
@@ -67,8 +68,9 @@ const Login = () => {
             />
           </div>
           <div className="form-group">
-            <label>Password</label>
+            <label htmlFor="login-password">Password</label>
             <input 
+              id="login-password"
               type="password" 
               className="form-input" 
               placeholder="••••••••"

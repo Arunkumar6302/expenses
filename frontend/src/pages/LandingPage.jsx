@@ -31,7 +31,7 @@ const LandingPage = () => {
             <li><Link to="/login">Login</Link></li>
           </ul>
 
-          <button className="mobile-menu-btn" onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
+          <button className="mobile-menu-btn" aria-label="Toggle navigation menu" onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
             {isMobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
           </button>
         </div>
@@ -73,6 +73,7 @@ const LandingPage = () => {
               src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&q=80&w=800" 
               alt="Team working on finances" 
               className="hero-image"
+              loading="eager"
             />
           </div>
         </div>
@@ -100,7 +101,7 @@ const LandingPage = () => {
           <div className="insights-grid">
             {/* Card 1 */}
             <div className="insight-card">
-              <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=600" alt="News 1" />
+              <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=600" alt="News 1" loading="lazy" />
               <div className="insight-content">
                 <h3>Automated Approvals: A Comprehensive Overview, Features, and Business Benefits</h3>
                 <p>Learn how SHNOOR EXPENSE helps businesses manage receipts, budgets, and vendor processes efficiently.</p>
@@ -112,7 +113,7 @@ const LandingPage = () => {
             </div>
             {/* Card 2 */}
             <div className="insight-card">
-              <img src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?auto=format&fit=crop&q=80&w=600" alt="News 2" />
+              <img src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?auto=format&fit=crop&q=80&w=600" alt="News 2" loading="lazy" />
               <div className="insight-content">
                 <h3>Receipt Tracking Solutions for Employees: Simplifying Expense Operations</h3>
                 <p>Discover reliable expense tracking solutions for your team. Learn about submission processes, documentation, and manager clearance.</p>
@@ -124,7 +125,7 @@ const LandingPage = () => {
             </div>
             {/* Card 3 */}
             <div className="insight-card">
-              <img src="https://images.unsplash.com/photo-1580048915913-4f8f5cb481c4?auto=format&fit=crop&q=80&w=600" alt="News 3" />
+              <img src="https://images.unsplash.com/photo-1580048915913-4f8f5cb481c4?auto=format&fit=crop&q=80&w=600" alt="News 3" loading="lazy" />
               <div className="insight-content">
                 <h3>Building Trust and Security Through Reliable Financial Analytics Services</h3>
                 <p>Protect your organization with our professional budget verification solutions. We help you validate employee expenses instantly.</p>
