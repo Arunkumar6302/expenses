@@ -86,8 +86,62 @@ button {
   color: var(--text-dark);
 }
 
+/* Added missing global styles for lazy loading compatibility */
+.btn-yellow {
+  background-color: var(--yellow);
+  color: var(--dark-navy);
+  font-weight: 700;
+  padding: 0.8rem 2rem;
+  border-radius: 4px;
+  text-decoration: none;
+  font-size: 0.95rem;
+  transition: background-color 0.2s;
+  cursor: pointer;
+  border: none;
+  font-family: inherit;
+}
+
+.btn-yellow:hover {
+  background-color: var(--yellow-hover);
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.form-group label {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--dark-navy);
+}
+
+.form-input {
+  width: 100%;
+  padding: 0.85rem 1rem;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  font-family: inherit;
+  font-size: 0.95rem;
+  transition: all 0.2s;
+  background-color: var(--light-bg);
+  color: var(--text-dark);
+}
+
+.form-input:focus {
+  outline: none;
+  border-color: var(--yellow);
+  box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.1);
+  background-color: var(--white);
+}
+
 .btn-outline:hover {
   background-color: var(--bg-light);
+}
+
+.icon-yellow {
+  color: var(--yellow);
 }
 
 .container {
