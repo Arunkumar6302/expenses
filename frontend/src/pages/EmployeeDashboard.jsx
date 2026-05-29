@@ -12,6 +12,7 @@ const EmployeeDashboard = () => {
   const navigate = useNavigate();
   const [expenses, setExpenses] = useState([]);
   const [showForm, setShowForm] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState({
     category: '', amount: '', datetime: '', reference_number: '', notes: ''
   });
@@ -69,6 +70,7 @@ const EmployeeDashboard = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setIsSubmitting(true);
     try {
       const token = localStorage.getItem('token');
       const data = new FormData();
@@ -89,6 +91,8 @@ const EmployeeDashboard = () => {
       }
     } catch (err) {
       console.error(err);
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -230,7 +234,9 @@ const EmployeeDashboard = () => {
               </div>
               <div className="form-actions">
                 <button type="button" onClick={() => setShowForm(false)} className="btn-outline">Cancel</button>
-                <button type="submit" className="btn-yellow">Submit Expense</button>
+                <button type="submit" className="btn-yellow" disabled={isSubmitting} style={{ cursor: isSubmitting ? 'not-allowed' : 'pointer', opacity: isSubmitting ? 0.7 : 1 }}>
+                  {isSubmitting ? 'SUBMITTING...' : 'Submit Expense'}
+                </button>
               </div>
             </form>
           </div>

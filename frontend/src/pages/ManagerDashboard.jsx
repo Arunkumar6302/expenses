@@ -13,6 +13,7 @@ const ManagerDashboard = () => {
   const [filter, setFilter] = useState('All');
   
   const [editingExpense, setEditingExpense] = useState(null);
+  const [isSaving, setIsSaving] = useState(false);
   const [editForm, setEditForm] = useState({
     category: '', amount: '', datetime: '', reference_number: '', notes: ''
   });
@@ -118,6 +119,7 @@ const ManagerDashboard = () => {
 
   const handleEditSubmit = async (e) => {
     e.preventDefault();
+    setIsSaving(true);
     try {
       const token = localStorage.getItem('token');
       const res = await fetch(`${import.meta.env.VITE_API_URL || "http://localhost:5000"}/api/expenses/${editingExpense}`, {
@@ -134,6 +136,8 @@ const ManagerDashboard = () => {
       }
     } catch (err) {
       console.error(err);
+    } finally {
+      setIsSaving(false);
     }
   };
 
@@ -275,7 +279,9 @@ const ManagerDashboard = () => {
               </div>
               <div className="form-actions">
                 <button type="button" onClick={() => setEditingExpense(null)} className="btn-outline">Cancel</button>
-                <button type="submit" className="btn-yellow">Save Changes</button>
+                <button type="submit" className="btn-yellow" disabled={isSaving} style={{ cursor: isSaving ? 'not-allowed' : 'pointer', opacity: isSaving ? 0.7 : 1 }}>
+                  {isSaving ? 'SAVING...' : 'Save Changes'}
+                </button>
               </div>
             </form>
           </div>

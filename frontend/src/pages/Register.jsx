@@ -12,6 +12,7 @@ const Register = () => {
     role: 'employee'
   });
   const [accepted, setAccepted] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   const navigate = useNavigate();
 
@@ -21,6 +22,7 @@ const Register = () => {
       alert("Please accept the Terms & Conditions and Privacy Policy.");
       return;
     }
+    setIsLoading(true);
     try {
       const res = await fetch(`${import.meta.env.VITE_API_URL || "http://localhost:5000"}/api/auth/register`, {
         method: 'POST',
@@ -34,9 +36,11 @@ const Register = () => {
         else navigate('/employee');
       } else {
         alert(data.error);
+        setIsLoading(false);
       }
     } catch (err) {
       alert('Registration failed');
+      setIsLoading(false);
     }
   };
 
@@ -114,7 +118,9 @@ const Register = () => {
               I accept the <Link to="/terms" style={{ color: 'var(--yellow-hover)' }}>Terms & Conditions</Link> and <Link to="/privacy-policy" style={{ color: 'var(--yellow-hover)' }}>Privacy Policy</Link>
             </label>
           </div>
-          <button type="submit" className="btn-auth">REGISTER</button>
+          <button type="submit" className="btn-auth" disabled={isLoading} style={{ cursor: isLoading ? 'not-allowed' : 'pointer', opacity: isLoading ? 0.7 : 1 }}>
+            {isLoading ? 'REGISTERING...' : 'REGISTER'}
+          </button>
         </form>
         <p className="auth-footer">
           Already have an account? <Link to="/login">Sign in</Link>

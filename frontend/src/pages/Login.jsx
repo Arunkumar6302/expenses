@@ -8,6 +8,7 @@ const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [accepted, setAccepted] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   const navigate = useNavigate();
 
@@ -17,6 +18,7 @@ const Login = () => {
       alert("Please accept the Terms & Conditions and Privacy Policy.");
       return;
     }
+    setIsLoading(true);
     try {
       const res = await fetch(`${import.meta.env.VITE_API_URL || "http://localhost:5000"}/api/auth/login`, {
         method: 'POST',
@@ -30,9 +32,11 @@ const Login = () => {
         else navigate('/employee');
       } else {
         alert(data.error);
+        setIsLoading(false);
       }
     } catch (err) {
       alert('Login failed');
+      setIsLoading(false);
     }
   };
 
@@ -85,7 +89,9 @@ const Login = () => {
               I accept the <Link to="/terms" style={{ color: 'var(--yellow-hover)' }}>Terms & Conditions</Link> and <Link to="/privacy-policy" style={{ color: 'var(--yellow-hover)' }}>Privacy Policy</Link>
             </label>
           </div>
-          <button type="submit" className="btn-auth">SIGN IN</button>
+          <button type="submit" className="btn-auth" disabled={isLoading} style={{ cursor: isLoading ? 'not-allowed' : 'pointer', opacity: isLoading ? 0.7 : 1 }}>
+            {isLoading ? 'SIGNING IN...' : 'SIGN IN'}
+          </button>
         </form>
         <p className="auth-footer">
           Don't have an account? <Link to="/register">Register here</Link>
